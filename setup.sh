@@ -1,4 +1,4 @@
-packages=`curl https://raw.githubusercontent.com/huynp1999/dotfiles/master/packages`
+packages=$(curl https://raw.githubusercontent.com/huynp1999/dotfiles/master/packages | tr '.' '\n' | sed -n '2p' | cut -d' ' -f2-)
 if [ -n "$(which yum)" ]
 then
 	yum install $packages -y

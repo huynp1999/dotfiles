@@ -2,4 +2,6 @@ vim
 sysstat
 xclip
 xauth
+.deb
 software-properties-common
+.rpm
