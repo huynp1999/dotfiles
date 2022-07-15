@@ -3,7 +3,7 @@ if [ -n "$(which yum)" ]
 then
 	yum install $packages -y
 else
-	apt install $packages -y
+	apt update; apt install $packages -y
 fi
 
 # setup vim
@@ -11,7 +11,7 @@ rm -rf /usr/bin/vi
 ln -s /usr/bin/vim /usr/bin/vi
 cp -r ./.vim* ~
 
-#setup copy bashrc
+#setup bashrc
 iphostname=$(hostname -I)+$(hostname)
 if grep -Fxq "$iphostname" /etc/hosts
 then
