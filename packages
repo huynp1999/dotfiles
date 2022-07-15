@@ -5,3 +5,4 @@ xauth
 .deb
 software-properties-common
 .rpm
+vim
