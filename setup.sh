@@ -1,7 +1,7 @@
 packages=$(curl https://raw.githubusercontent.com/huynp1999/dotfiles/master/packages)
-common=$(echo $packages | tr '.' '\n' | sed -n '1p' | cut -d' ' -f2-)
+common=$(echo $packages | tr '.' '\n' | sed -n '1p' )
 deb=$(echo $packages | tr '.' '\n' | sed -n '2p' | cut -d' ' -f2-)
-rpm=$(echo $packages | tr '.' '\n' | sed -n '1p' | cut -d' ' -f2-)
+rpm=$(echo $packages | tr '.' '\n' | sed -n '3p' | cut -d' ' -f2-)
 if [ -n "$(which yum)" ]
 then
 	yum install $packages -y
