@@ -1,12 +1,12 @@
-packages=$(curl https://raw.githubusercontent.com/huynp1999/dotfiles/master/packages)
-common=$(echo $packages | tr '.' '\n' | sed -n '1p' )
-deb=$(echo $packages | tr '.' '\n' | sed -n '2p' | cut -d' ' -f2-)
-rpm=$(echo $packages | tr '.' '\n' | sed -n '3p' | cut -d' ' -f2-)
+packages=`curl https://raw.githubusercontent.com/huynp1999/dotfiles/master/packages`
+common=`echo $packages | tr '.' '\n' | sed -n '1p' `
+deb=`echo $packages | tr '.' '\n' | sed -n '2p' | cut -d' ' -f2-`
+rpm=`echo $packages | tr '.' '\n' | sed -n '3p' | cut -d' ' -f2-`
 if [ -n "$(which yum)" ]
 then
-	yum install $packages -y
+	yum install $common $rpm -y
 else
-	apt update; apt install $packages -y
+	apt update; apt install $common $deb -y
 fi
 
 # setup vim
