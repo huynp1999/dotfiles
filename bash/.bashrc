@@ -1,4 +1,13 @@
 export EDITOR="vim"
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# if not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
 # colorize output
 alias ls='ls --color=auto'
@@ -15,6 +24,6 @@ if ! shopt -oq posix; then
 fi
 
 # copy previous commands: Ctrl+] (or xc)
-bind '"\C-]":"\C-e\C-u xclip -selection clipboard <<"EOF"\n\C-y\nEOF\n"'
+bind '"\C-]":"\C-e\C-u xclip -selection clipboard <<"EOF"\n\C-y\nEOF\n"' 2>/dev/null
 alias xc='history 2 | cut -c 8- | head -n 1 | xclip -selection clipboard'
 
