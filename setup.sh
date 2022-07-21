@@ -13,7 +13,13 @@ fi
 # setup vim
 rm -rf /usr/bin/vi
 ln -s /usr/bin/vim /usr/bin/vi
-cd ~/dotfiles; if [ $? -eq 0 ]; then cp -r ./.vim* ~ ; else echo "dotfiles repo does not exist in ~/"; fi 
+cd ~/dotfiles 2>/dev/null
+if [ $? -eq 0 ]
+then
+	cp -r ~/dotfiles/vim/.vim* ~/
+else
+	echo "dotfiles repo does not exist in ~/"
+fi 
 
 # setup bashrc
 ip_hostname=$(hostname -I)+$(hostname)
