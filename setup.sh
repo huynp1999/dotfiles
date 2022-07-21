@@ -22,5 +22,5 @@ then
 	echo `hostname -I` `hostname` >> /etc/hosts
 fi
 
-wget https://raw.githubusercontent.com/huynp1999/dotfiles/master/bash/.bashrc -o ~/tmp/.bashrc
+wget https://raw.githubusercontent.com/huynp1999/dotfiles/master/bash/.bashrc -o ~/.bashrc
 . ~/.bashrc
