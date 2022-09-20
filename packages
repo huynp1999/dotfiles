@@ -3,6 +3,7 @@ sysstat
 xclip
 xauth
 bash-completion
+byobu
 .deb
 software-properties-common
 .rpm
