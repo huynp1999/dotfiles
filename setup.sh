@@ -36,22 +36,21 @@ mkdir ~/.byobu/bin
 wget https://raw.githubusercontent.com/huynp1999/dotfiles/master/byobu/.byobu/bin/simple_dv -O ~/.byobu/bin/simple_dv
 DISABLE_STT="logo release disk load_average cpu_count cpu_freq memory uptime raid reboot_required updates_available"
 ENABLE_STT="simple_dv ip_address"
-STTPATH="~/.byobu/status"
+STTPATH="$(echo ~)/.byobu/status"
 for i in $DISABLE_STT
 do
-	sed -i '/#tmux_right/d'  $DISABLE_STT
-	sed -i "/tmux_right/ s/$i/#$i/g" $DISABLE_STT
-	sed -i "/tmux_left/ s/$i/#$i/g" $DISABLE_STT
+        sed -i '/#tmux_right/d'  $STTPATH
+        sed -i "/tmux_right/ s/$i/#$i/g" $STTPATH
+        sed -i "/tmux_left/ s/$i/#$i/g" $STTPATH
 done
 j=1
 for i in $ENABLE_STT
 do
-	# first status for tmux_left
-	if [ $j -eq 1 ]
-	then
-		sed -i "/tmux_left/ s/ session/$i session/g" $DISABLE_STT
-		j=2
-	fi
-	sed -i "/tmux_right/ s/#$i/$i/g" $DISABLE_STT
-
+        # first status for tmux_left
+        if [ $j -eq 1 ]
+        then
+                sed -i "/tmux_left/ s/ session/ $i session/g" $STTPATH
+                j=2
+        fi
+        sed -i "/tmux_right/ s/#$i/$i/g" $STTPATH
 done
